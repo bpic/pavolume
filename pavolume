@@ -61,10 +61,9 @@ scriptdir = os.path.dirname(os.path.realpath(__file__))
 # read config
 config = ConfigParser()
 config.read([
-	os.path.join(scriptdir, "pavolume.conf"),
-	os.path.expanduser("$XDG_CONFIG_HOME/pavolume/pavolume.conf"),
-	os.path.expanduser("$HOME/.config/pavolume/pavolume.conf"),
-	"/etc/pavolume/pavolume.conf"
+	"/etc/pavolume/pavolume.conf",
+	os.path.expandvars("$HOME/.config/pavolume/pavolume.conf"),
+	os.path.expandvars("$XDG_CONFIG_HOME/pavolume/pavolume.conf"),
 ])
 
 sink = config.get("Sink", "default_sink")
